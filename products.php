@@ -2,6 +2,45 @@
 <html>
 <head>
 	<title>Product List</title>
+	<style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+		section {
+			display: flex;
+			flex-flow: row wrap;
+		}
+
+		article {
+			display: flex;
+			flex-direction: row;
+			width: 300px;
+			border: 1px solid black;
+			padding: 0.5em;
+			margin: 0.5em;
+			text-align: right;
+		}
+
+		div {
+			padding: 0.5em;
+		}
+
+        h2, p {
+            font-size: 0.75em;
+        }
+
+		#price {
+			font-weight: 800;
+			font-style: italic;
+			font-size: 1em;
+		}
+
+        img {
+            height: 125px;
+            width: 80px;
+        }
+    </style>
 </head>
 <body>
 	<?php require_once 'navbar.html'; ?>
@@ -22,15 +61,27 @@
 
 		$result_query = mysqli_query($db_handle, $sql_query);
 
-		while ($db_field = mysqli_fetch_assoc($result_query)) {
-			echo '<hr>'; 
-			//echo $db_field['movie_id'] . '<br>'; 
-			echo '<img href="' . $db_field['poster'] . '" alt="' . $db_field['title'] . '">';
-			echo '<p><strong>Title : </strong>' . 
-			'<a href="product.php?id=' . $db_field['movie_id'] . '">' . $db_field['title'] . '</a></p>'; 
-			echo '<p><strong>Year of release : </strong>' . $db_field['release_year'] . '</p>';
-		}
-
+		$sql_query = "SELECT b.*, a.auth_firstname, a.auth_lastname, f.format_name, c.category_name
+				FROM books b 
+				INNER JOIN authors a ON a.author_id = b.author_id
+				INNER JOIN formats f ON f.format_id = b.format_id
+				INNER JOIN categories c ON c.category_id = b.category_id
+				ORDER BY title";				
+				$result_query = mysqli_query($db_handle, $sql_query);		
+		echo "<section>";
+		while ($db_record = mysqli_fetch_assoc($result_query)) {
+			echo "<article>";
+			echo "<img src=" . $db_record['book_image'] . " />";
+			echo "<div>";
+			echo "<h2>" . $db_record['title'] . " (" . $db_record['auth_firstname'] . " " . $db_record['auth_lastname'] . ")<h2>";
+			echo "<p id='price'> Price: " . $db_record['price'] . "€<p>";
+			echo "<p> Format: " . $db_record['format_name'] . " || Category: " . $db_record['category_name'] . "<p>";
+			echo "<a href=product.php?book_id=" . $db_record['book_id'] . "> See more Info </a><br><br>";
+			echo "<a href=cart.php?book_id=" . $db_record['book_id'] . "> Add to Cart </a><br><br>";
+			echo "</div>";
+			echo "</article>";
+		}		
+		echo "</section>";
 
 	} else {
 		echo 'DB not found (' . DB_NAME . ')';
