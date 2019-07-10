@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 10, 2019 at 07:30 AM
+-- Generation Time: Jul 10, 2019 at 12:26 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -62,22 +62,25 @@ CREATE TABLE IF NOT EXISTS `books` (
   `price` varchar(45) DEFAULT NULL,
   `author_id` int(11) DEFAULT NULL,
   `book_pubdate` date DEFAULT NULL,
+  `book_blurb` varchar(2000) DEFAULT NULL,
+  `book_image` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`book_id`),
   KEY `author_id_idx` (`author_id`),
   KEY `format_id_idx` (`format_id`),
   KEY `category_id_idx` (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `books`
 --
 
-INSERT INTO `books` (`book_id`, `title`, `category_id`, `format_id`, `price`, `author_id`, `book_pubdate`) VALUES
-(1, 'Pride and Prejudice', 9, 2, '12.99', 1, '1813-01-01'),
-(2, 'Northanger Abbey', 9, 3, '29.99', 1, '1817-01-01'),
-(3, 'Love and Fiendship', 6, 3, '24.99', 1, '1790-01-01'),
-(4, 'The Hunt for Red October', 8, 2, '10.99', 2, '1984-01-01'),
-(5, 'Clear and Present Danger', 8, 2, '9.99', 2, '1989-01-01');
+INSERT INTO `books` (`book_id`, `title`, `category_id`, `format_id`, `price`, `author_id`, `book_pubdate`, `book_blurb`, `book_image`) VALUES
+(1, 'Pride and Prejudice', 9, 2, '12.99', 1, '1813-01-01', 'An 1813 romantic novel of manners written by Jane Austen. The novel follows the character development of Elizabeth Bennet, the dynamic protagonist of the book, who learns about the repercussions of hasty judgments and eventually comes to appreciate the difference between superficial goodness and actual goodness. A classic piece filled with comedy, its humor lies in its honest depiction of manners, education, marriage and money during the Regency era in Great Britain', 'images/book1.jpg'),
+(2, 'Northanger Abbey', 9, 3, '29.99', 1, '1817-01-01', 'Was the first of Jane Austen\'s novels to be completed for publication, in 1803. However, it was not published until after her death in 1817, along with another novel of hers, Persuasion. Northanger Abbey is a satire of Gothic novels, which were quite popular at the time, in 1798–99. This coming-of-age story revolves around Catherine Morland, a young and naïve \"heroine\", who entertains the reader on her journey to a better understanding of the world and those around her. In the course of the novel, she discovers that she differs from those other women who crave wealth or social acceptance, as instead she wishes only to have happiness supported by genuine morality.', 'images/book2.png'),
+(3, 'Love and Fiendship', 6, 3, '24.99', 1, '1790-01-01', 'A short epistolary novel by Jane Austen, possibly written in 1794 but not published until 1871. This early complete work, which the author never submitted for publication, describes the schemes of the title character.', 'images/book3.png'),
+(4, 'The Hunt for Red October', 8, 2, '10.99', 2, '1984-01-01', 'The debut novel by Tom Clancy, first published on October 1, 1984 by the Naval Institute Press. It depicts Soviet submarine captain Marko Ramius as he seemingly goes rogue with his country\'s cutting-edge ballistic missile submarine Red October, and marks the first appearance of Clancy\'s most popular fictional character Jack Ryan, an analyst working for the Central Intelligence Agency, as he must prove his theory that Ramius had intended to defect to the United States. The book was loosely inspired by the mutiny on the Soviet frigate Storozhevoy in 1975. The Hunt for Red October launched Clancy\'s successful career as a novelist, especially after then-U.S. President Ronald Reagan remarked that he had enjoyed reading the book. A namesake film adaptation was released on March 2, 1990, and several computer and video games based on the book have been developed. Since then, the book has become instrumental in bringing the book genre of techno-thriller into the mainstream.', 'images/book4.jpg'),
+(5, 'Clear and Present Danger', 8, 2, '9.99', 2, '1989-01-01', 'A political thriller novel, written by Tom Clancy and published on August 17, 1989. A sequel to The Cardinal of the Kremlin (1988), main character Jack Ryan becomes acting Deputy Director of Intelligence in the Central Intelligence Agency, and discovers that he is being kept in the dark by his colleagues who are conducting a covert war against a drug cartel based in Colombia. It debuted at number one on the New York Times bestseller list. A film adaptation, featuring Harrison Ford reprising his role as Ryan, was released on August 3, 1994.', 'images/book5.jpg'),
+(6, 'Patriot Games', 8, 2, '11.99', 2, '1987-07-01', 'A thriller novel, written by Tom Clancy and published on July 1987. It is the indirect sequel to Without Remorse, and is chronologically the first book featuring Jack Ryan, the main character in most of Clancy’s novels. The novel focuses on Ryan being the target of Irish terrorist group Ulster Liberation Army for thwarting their kidnapping attempt on the Prince and Princess of Wales in London. It debuted at number one on the New York Times bestseller list. A film adaptation, starring Harrison Ford as Ryan, premiered on June 5, 1992.', 'images/book6.jpg');
 
 -- --------------------------------------------------------
 
