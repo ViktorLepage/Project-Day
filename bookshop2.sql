@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 09, 2019 at 01:52 PM
+-- Generation Time: Jul 10, 2019 at 07:30 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -66,7 +66,18 @@ CREATE TABLE IF NOT EXISTS `books` (
   KEY `author_id_idx` (`author_id`),
   KEY `format_id_idx` (`format_id`),
   KEY `category_id_idx` (`category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `books`
+--
+
+INSERT INTO `books` (`book_id`, `title`, `category_id`, `format_id`, `price`, `author_id`, `book_pubdate`) VALUES
+(1, 'Pride and Prejudice', 9, 2, '12.99', 1, '1813-01-01'),
+(2, 'Northanger Abbey', 9, 3, '29.99', 1, '1817-01-01'),
+(3, 'Love and Fiendship', 6, 3, '24.99', 1, '1790-01-01'),
+(4, 'The Hunt for Red October', 8, 2, '10.99', 2, '1984-01-01'),
+(5, 'Clear and Present Danger', 8, 2, '9.99', 2, '1989-01-01');
 
 -- --------------------------------------------------------
 
@@ -175,7 +186,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_country` varchar(45) DEFAULT NULL,
   `user_telephone` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `user_firstname`, `user_lastname`, `user_email`, `user_pass`, `user_address1`, `user_address2`, `user_postcode`, `user_country`, `user_telephone`) VALUES
+(1, 'Stuart', 'Walker', 'batecsw@hotmail.com', 'anypassowrd', '14 rue des Carrieres', 'Strassen', '8016', 'Luxembourg', '654321098'),
+(2, 'John', 'Bull', 'jbullocks@gmail.com', 'anotherpassword', '23 rue Aubepines', 'Luxembourg', '1559', 'Luxembourg', '666555444');
 
 --
 -- Constraints for dumped tables
